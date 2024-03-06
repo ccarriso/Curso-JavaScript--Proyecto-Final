@@ -1,16 +1,3 @@
-/*Crea los arreglos que van a manejar los ingresos y los egresos
-de la aplicación (elimina los arreglos que se habían creado para
-poder realizar la prueba de las funciones). Para ello, define
-la variable ingresos y egresos fuera de toda función (al principio
-del archivo de ser posible) en el archivo app.js de la siguiente
-manera:
-• El objeto ingresos es un arreglo que instancia a la clase Ingreso
-y recibe como parámetros, a manera de ejemplo, los valores
-(‘Salario’, 20000) y (‘Venta auto’,50000).
-• La constante egresos es un arreglo que crea dos objetos del tipo Egreso y recibe
-como parámetros, a manera de ejemplo, los valores (‘Renta’, 4000) y (‘Ropa’, 800).*/
-
-
 import Ingreso from './Ingreso.js';
 import Egreso from './Egreso.js';
 
@@ -24,6 +11,8 @@ let egresos = [
     new Egreso('Ropa',800)
 ]
 
+let porcentajeEgreso;
+
 const formatoMoneda = (valor) => {
     return valor.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 2 });
 };
@@ -33,12 +22,12 @@ const formatoPorcentaje = (valor) => {
 };
 
 const cargarCabecero = () => {
-    
-
-  /*Modifica la clase totalIngresos y recorre el arreglo ingresos
-   con un ciclo for of. Asigna a la variable totalIngresos
-   la suma del valor del elemento ingreso.*/
-
+    let presupuesto = totalIngresos() - totalEgresos();
+    document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
+    document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
+    document.getElementById("ingresos").innerHTML = formatoMoneda(totalIngresos());
+    document.getElementById("egresos").innerHTML = formatoMoneda(totalEgresos());
+}
 
 const totalIngresos = () => {
     let totalIngreso = 0;
@@ -58,13 +47,21 @@ const totalEgresos = () => {
     return totalEgreso;
 };
 
-    let presupuesto = totalIngresos() - totalEgresos();
-    let porcentajeEgreso = totalEgresos () / totalIngresos ();
-
-console.log(formatoMoneda(presupuesto));
-console.log(formatoPorcentaje(porcentajeEgreso));
-console.log(formatoMoneda(totalIngresos()));
-console.log(formatoMoneda(totalEgresos()));
-};
+function cargarApp() {
+    porcentajeEgreso = totalEgresos () / totalIngresos ();
 
     cargarCabecero();
+
+
+
+//console.log(formatoMoneda(presupuesto));
+  console.log(document.getElementById("presupuesto").innerHTML);
+//console.log(formatoPorcentaje(porcentajeEgreso));
+console.log(document.getElementById("porcentaje").innerHTML);
+//console.log(formatoMoneda(totalIngresos()));
+console.log(document.getElementById("ingresos").innerHTML);
+//console.log(formatoMoneda(totalEgresos()));
+console.log(document.getElementById("egresos").innerHTML);
+}
+
+cargarApp();
