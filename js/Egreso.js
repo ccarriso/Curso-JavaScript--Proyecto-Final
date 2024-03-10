@@ -1,4 +1,3 @@
-//const contadorEgresos = 0;
 import Dato from './Dato.js';
 
 class Egreso extends Dato {

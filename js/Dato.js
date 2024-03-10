@@ -9,9 +9,6 @@ get descripcion() {
 }
 set descripcion(newDescripcion){
     return this._descripcion = newDescripcion;
-/* set descripcion(newDescripcion) {
-    return this._descripcion['_descripcion'] = newDescripcion;
-   }*/
 
 }
 
@@ -21,9 +18,6 @@ get valor() {
 
 set valor(newValor){
     return this._valor = newValor;
-/* set valor(newValor) {
-    return this._valor['_valor'] = newValor;
-   }*/
 
 }
 }
